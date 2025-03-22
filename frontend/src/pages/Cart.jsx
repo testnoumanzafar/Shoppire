@@ -12,7 +12,7 @@ const Cart = () => {
   let dispatch = useDispatch();
   const Cartitem = useSelector((state) => state.allCart.carts);
   const [total, setTotal] =  useState(0);
-  console.log(Cartitem), "cart";
+  // console.log(Cartitem), "cart";
    const  handleincrement = (id) => {
             dispatch(addIncrement(id));
    }

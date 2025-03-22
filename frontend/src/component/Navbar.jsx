@@ -41,83 +41,89 @@ const navigate =useNavigate()
 };
 
   return (
-    <nav className="bg-white  py-4 ">
-      <div className="  flex  justify-between mx-12 items-center  ">
-        {/* Left Side */}
-        <ul className="flex space-x-6  ">
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `  cursor-pointer text-lg font-medium flex gap-2 ${
-              isActive ? 'text-blue-500' : ''
-            }`
-          }
-        >
-          <CiHome className="mt-1" /> Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/collection"
-          className={({ isActive }) =>
-            `  cursor-pointer text-lg font-medium flex gap-2 ${
-              isActive ? 'text-blue-400' : ''
-            }`
-          }
-        >
-          <BsCollectionFill className="mt-1" /> Collection
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/about"
-          className={({ isActive }) =>
-            `  cursor-pointer text-lg font-medium flex gap-2 ${
-              isActive ? 'text-blue-500' : ''
-            }`
-          }
-        >
-          <BiSolidLabel className="mt-1" /> About
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/contact"
-          className={({ isActive }) =>
-            `  cursor-pointer text-lg font-medium flex gap-2 ${
-              isActive ? 'text-blue-500' : ''
-            }`
-          }
-        >
-          <MdContacts className="mt-1" /> Contact
-        </NavLink>
-      </li>
-    </ul>
-
-        {/* Center Brand Name */}  
-        <div className="text-2xl font-bold text-blue-600  -ml-14 ">Shoppire</div>
-
-        {/* Right Side */}
-        <div className="flex items-center space-x-6  ">
-
-        <Link to='/cart'> <div className="relative">
-            <FaShoppingCart className="text-2xl cursor-pointer" />
+    <nav className="bg-white py-4 sticky top-0 left-0 z-50 shadow-md">
+    <div className="flex justify-between items-center mx-12">
+      {/* Left Side - Brand Name */}
+      <div className="text-2xl font-bold text-blue-600">QuickBuy</div>
+  
+      {/* Center - Navigation Links */}
+      <ul className="flex space-x-6">
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `cursor-pointer text-lg font-medium flex gap-2 ${
+                isActive ? 'text-blue-500' : 'text-gray-700 hover:text-blue-500'
+              }`
+            }
+          >
+            <CiHome className="mt-1" /> Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/collection"
+            className={({ isActive }) =>
+              `cursor-pointer text-lg font-medium flex gap-2 ${
+                isActive ? 'text-blue-400' : 'text-gray-700 hover:text-blue-400'
+              }`
+            }
+          >
+            <BsCollectionFill className="mt-1" /> Collection
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `cursor-pointer text-lg font-medium flex gap-2 ${
+                isActive ? 'text-blue-500' : 'text-gray-700 hover:text-blue-500'
+              }`
+            }
+          >
+            <BiSolidLabel className="mt-1" /> About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `cursor-pointer text-lg font-medium flex gap-2 ${
+                isActive ? 'text-blue-500' : 'text-gray-700 hover:text-blue-500'
+              }`
+            }
+          >
+            <MdContacts className="mt-1" /> Contact
+          </NavLink>
+        </li>
+      </ul>
+  
+      {/* Right Side - Cart and Profile Icons */}
+      <div className="flex items-center space-x-6">
+        <Link to="/cart">
+          <div className="relative">
+            <FaShoppingCart className="text-2xl cursor-pointer text-gray-700 hover:text-blue-500" />
             <div className="absolute -top-2 -right-2 text-white bg-red-500 text-xs w-5 h-5 rounded-full flex items-center justify-center">
-             {showproud.length}
+              {showproud.length}
             </div>
-            
-          </div></Link> 
-
-          {/* Profile Icon */}
-          <FaRegUserCircle className="text-2xl cursor-pointer  " onClick={Setting} />
-          {setting && <div className="absolute top-12 right-4 w-32 text-center border border-gray-200 bg-white shadow-md p-2 rounded-md">
-               {/* <p className='flex gap-2'>Orders <FaArrowRightLong  className='mt-1'/></p> */}
-               <p className='flex gap-2' onClick={logout}>logout  <FaArrowRightLong  className='mt-1'/> </p>
-            </div>}
-        </div>
+          </div>
+        </Link>
+  
+        {/* Profile Icon */}
+        <FaRegUserCircle
+          className="text-2xl cursor-pointer text-gray-700 hover:text-blue-500"
+          onClick={Setting}
+        />
+        {setting && (
+          <div className="absolute top-12 right-4 w-32 text-center border border-gray-200 bg-white shadow-md p-2 rounded-md">
+            <p className="flex gap-2" onClick={logout}>
+              Logout <FaArrowRightLong className="mt-1" />
+            </p>
+          </div>
+        )}
       </div>
-    </nav>
+    </div>
+  </nav>
   )
 }
 

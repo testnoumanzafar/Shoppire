@@ -15,8 +15,8 @@ const Placeorder = () => {
   const dispatch  = useDispatch()
   const showtotal= useSelector((state)=>state.allAmounts.amounts) 
   const cartitem= useSelector((state)=>state.allCart.carts) 
-  console.log(showtotal,'amount');
-  console.log(cartitem,'cartitem');
+  // console.log(showtotal,'amount');
+  // console.log(cartitem,'cartitem');
 
   const [formData, setFormData] = useState({
     firstName: "",

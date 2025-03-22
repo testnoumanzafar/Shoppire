@@ -57,8 +57,9 @@ const Collection = () => {
 
   return (
     <>
-    <div className="w-full flex justify-between my-6 mx-9 ">
-      <div className="w-60 p-4 bg-white shadow-md rounded-lg">
+    <div className="w-full flex">
+      {/* Left Sidebar (Fixed) */}
+      <div className="w-60 p-4 bg-white shadow-md rounded-lg fixed top-20 left-6 h-[calc(100vh-6rem)] overflow-y-auto">
         {/* Search Bar */}
         <div className="mb-6">
           <div className="relative">
@@ -68,10 +69,12 @@ const Collection = () => {
               onChange={(e) => setSearch(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-            <span className="absolute right-3 top-2.5 text-gray-500"><FaSearch /></span>
+            <span className="absolute right-3 top-2.5 text-gray-500">
+              <FaSearch />
+            </span>
           </div>
         </div>
-
+  
         {/* Categories */}
         <div className="w-48 p-4 bg-gray-100 shadow-md rounded-lg">
           <h3 className="text-lg font-semibold mb-3">Categories</h3>
@@ -88,7 +91,7 @@ const Collection = () => {
             ))}
           </div>
         </div>
-
+  
         {/* Types */}
         <div className="mb-6 w-48 mt-4 p-4 bg-gray-100 shadow-md rounded-lg">
           <h3 className="text-lg font-semibold mb-3">Types</h3>
@@ -105,48 +108,64 @@ const Collection = () => {
             ))}
           </div>
         </div>
-
+  
         {/* Sort Dropdown */}
-         <div>
-            <h3 className="text-lg font-semibold mb-3">Sort by:</h3>
-            <select
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-              onChange={handleSortChange}
-            >
-              <option value="relevant">Sort by: Relevant</option>
-              <option value="price_low_to_high">Sort by Price: Low to High</option>
-              <option value="price_high_to_low">Sort by Price: High to Low</option>
-            </select>
-          </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Sort by:</h3>
+          <select
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={handleSortChange}
+          >
+            <option value="relevant">Sort by: Relevant</option>
+            <option value="price_low_to_high">Sort by Price: Low to High</option>
+            <option value="price_high_to_low">Sort by Price: High to Low</option>
+          </select>
         </div>
-
-      {/* Product Grid */}
-      <div className="w-[1100px] flex flex-wrap p-4   bg-white  shadow-md rounded-lg">
-        {filteredProducts.length > 0 ? (
-filteredProducts.map((item, index) => (
-          <div key={index} className="my-4 p-3 w-[254px]">
-            <Link to={`/product/${item._id}`}>
-              <img src={item.image[0]} alt="new arrival" />
-            </Link>
-            <div className="bg-white shadow-md px-2 rounded-b-lg">
-              <p className="text-sm font-bold mt-2">{item.name}</p>
-              <div className="flex justify-between items-center mt-1">
-                <p className="text-sm text-gray-600 font-bold">{item.category}</p>
-                <p className="text-lg text-teal-500 font-medium">${item.price}</p>
+      </div>
+  
+      {/* Right Side (Product Grid) */}
+      <div className="ml-72 p-4 bg-white shadow-md rounded-lg flex-1  mt-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((item, index) => (
+              <div key={index} className="my-4 p-3 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow">
+                <Link to={`/product/${item._id}`}>
+                  <img
+                    src={item.image[0]}
+                    alt="new arrival"
+                    className="w-full  object-cover rounded-lg"
+                  />
+                </Link>
+                <div className="px-2 py-3">
+                  <p className="text-sm font-bold mt-2">{item.name}</p>
+                  <div className="flex justify-between items-center mt-1">
+                    <p className="text-sm text-gray-600 font-bold">{item.category}</p>
+                    <p className="text-lg text-teal-500 font-medium">${item.price}</p>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1 pb-2 h-24">{item.description}</p>
+                </div>
               </div>
-              <p className="text-sm text-gray-600 mt-1 pb-2 h-24">{item.description}</p>
-            </div>
-          </div>
-         ))
-        ): (
-          <p>No products found</p>
-         )}
+            ))
+          ) : (
+            <p className="text-gray-600">No products found</p>
+          )}
+        </div>
       </div>
     </div>
+  
+    {/* Footer */}
+    <div className="ml-72 mt-6">
       <Footer />
-    </>
+    </div>
+  </>
 
   );
 };
 
 export default Collection;
+
+
+
+{/* <div className="ml-72 mt-6">
+<Footer />
+</div> */}
