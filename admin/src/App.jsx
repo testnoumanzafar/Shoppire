@@ -3,25 +3,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Add from './pages/Add'
 import Order from './pages/Order'
-// import List from './pages/List'
 import Header from './Components/Header'
 import Sidebar from './Components/Sidebar'
 import Login from './Components/Login'
 import { useEffect, useState } from 'react'
 import List from './pages/List'
 import { ToastContainer, toast } from 'react-toastify';
-//  
 export const BackendUrl=import.meta.env.VITE_BACKEND_URL
 // process.env.REACT_APP_BACKEND_URL
 
 function App() {
-  
-  // const [token, setToken]=useState(localStorage.getItem('token') || "")
-  //    useEffect(() => {
-  //     localStorage.setItem('token', token)
-  //    }, [token])
-
-
   const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   // Function to logout after 10 minutes
@@ -57,21 +48,6 @@ function App() {
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <>
     <ToastContainer />
@@ -83,21 +59,18 @@ function App() {
 
  <div>
         <Header/>
-<div className='flex mt-2 bg-slate-100'>
-     <Sidebar tokenremove={setToken}/>
+<div className='flex  gap-64 bg-slate-100   '>
+     <Sidebar tokenremove={setToken}  />
      <Routes>
       <Route path='/' element={<Add  token={token} />}/>
       <Route path='/order' element={<Order/>}/>
       <Route path='/list' element={<List token={token}/>}/>
      </Routes>
 </div>
-
  </div>
-
      </BrowserRouter> 
     )}
     </>
   )
 }
-
 export default App

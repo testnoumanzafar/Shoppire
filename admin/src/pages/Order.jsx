@@ -9,7 +9,7 @@ import { BackendUrl } from '../App';
 const Order = () => {
 
     const [orders, setOrder] = useState([])
-    console.log(orders);
+    // console.log(orders);
     
     const fetchorder = async () => {
       try {
@@ -35,43 +35,55 @@ const Order = () => {
     <>
     
     <div className="w-full p-6 bg-gray-100 min-h-screen flex flex-col items-center">
-  {orders.map((order, index) => (
-    <div
-      key={index}
-      className="bg-white shadow-md p-5 mb-4 rounded-lg flex flex-col md:flex-row justify-between items-center w-[900px]"
-    >
-    
-      <div className="flex items-start gap-3 w-1/2 border border-yellow-200 p-4 rounded-lg">
-        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-lg">
-          📦
-        </div>
-        <div className="text-gray-700 text-sm">
-          {order.items.map((item, index) => (
-            <div key={index}>
-              <p>item{index + 1}: {item.name}  Quantity: {item.qnty} sizes: {item.sizes.join(', ')}</p>
-            </div>
-          ))}
-       
-         <p><span className='font-semibold'>Name:</span>  {order.address.firstName}</p>
-          
-          <p><span className='font-semibold'>Address:</span>  {order.address.street} {order.address.city} {order.address.country} </p>
-          
-        </div>
-      </div>
-
-       
-      <div className="flex flex-col items-start w-1/5">
-        <p className="text-gray-900 font-bold text-lg">Rs {order.items[0].price} </p>
-        <p className="text-gray-900 font-bold text-lg">{new Date(order.date).toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  })}</p>
-      </div>
-
-      
-    </div>
-  ))}
+  <table className="w-[900px] bg-white shadow-md rounded-lg overflow-hidden">
+    <thead className="bg-blue-600 text-white">
+      <tr>
+        <th className="p-3">Sl</th>
+        {/* <th className="p-3">Order Id</th> */}
+        <th className="p-3">Order Date</th>
+        <th className="p-3">Customer Information</th>
+        {/* <th className="p-3">Store</th> */}
+        <th className="p-3">Item Quantity</th>
+        <th className="p-3">Total Amount</th>
+        <th className="p-3">Order Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {orders.map((order, index) => (
+        <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
+          <td className="p-3 text-center">{index + 1}</td>
+          {/* <td className="p-3 text-center">{order.orderId}</td> */}
+          <td className="p-3 text-center">
+            {new Date(order.date).toLocaleString('en-GB', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            })}
+          </td>
+          <td className="p-3">
+            {order.address.firstName} {order.address.lastName}<br />
+            {order.address.phone} <br/>
+            {order.address.street}
+          </td>
+          {/* <td className="p-3 text-center">{order.store}</td> */}
+          <td className="p-3 text-center">
+            {order.items.reduce((total, item) => total + item.qnty, 0)}
+            <br />
+            <span className="text-sm text-gray-600">
+              Size: {order.items.map((item) => item.sizes.join(', '))}
+            </span>
+          </td>
+          <td className="p-3 text-center">
+            Rs {order.items.reduce((total, item) => total + item.price * item.qnty, 0)}
+          </td>
+          <td className="p-3 text-center">{order.status}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 </div>
     
     </>

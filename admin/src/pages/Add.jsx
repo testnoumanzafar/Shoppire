@@ -67,7 +67,7 @@ const  Add = ({token}) => {
 
   return (
     <>  
-    <div className=" w-[450px]  m-3  h-screen">
+    <div className=" w-[450px]  m-3  ">
       <form onSubmit={handleSubmit} className="  mx-auto p-4 bg-white shadow rounded-lg">
         <h2 className="text-xl font-medium flex justify-center mb-2">Upload Image</h2>
         <div className="flex gap-11">
