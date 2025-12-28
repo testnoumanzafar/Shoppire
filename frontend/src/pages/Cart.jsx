@@ -44,10 +44,10 @@ const Cart = () => {
         <h2 className="font-semibold text-2xl">Cart <span className="text-teal-500"> List </span> ({Cartitem.length}item)</h2>
         <div className="mt-5 shadow-md px-2">
           {Cartitem.map((item, index) => (
-            <div key={index} className="flex  shadow  mb-3">
+            <div key={index} className="flex p-3 shadow mb-3">
               <div>
                 
-                <img
+                <img 
                   src={item.image}
                   alt="product img"
                   className="w-20 h-20"
@@ -56,8 +56,8 @@ const Cart = () => {
 
               <div className="w-full ml-3">
                 <div className="   w-full h-10 flex justify-between items-start">
-                  <div className="font-medium"> {item.name}</div>
-                  <MdDelete onClick={()=> handledeleted(item._id)} />
+                  <div className="font-medium "> {item.name}</div>
+                  <MdDelete onClick={()=> handledeleted(item._id)}  className="cursor-pointer "/>
                 </div>
                 <div className= "w-full h-10">
                   <div className="flex justify-between items-end">

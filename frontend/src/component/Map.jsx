@@ -25,12 +25,12 @@ const Map = ({ popular, handleAddToCart }) => {
                 <p className="text-sm text-gray-600 mt-2">{item.description}</p>
               </div>
             </Link>
-            <button
+            {/* <button
               className="w-full mt-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 rounded-lg transition-colors"
               onClick={() => handleAddToCart(item)}
             >
               Add to Cart
-            </button>
+            </button> */}
           </div>
         ))}
       </div>

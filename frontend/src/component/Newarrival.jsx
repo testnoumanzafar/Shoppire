@@ -8,7 +8,7 @@ const Newarrival = () => {
   const showproud= useSelector((state)=>state.allProducts.Products)
   const [popular, setpopular] =  useState([])
    useEffect(()=>{
-     const data = showproud.products.slice(0,8)
+     const data = showproud.products?.slice(0,8)
      setpopular(data)
 
    },[showproud.products])

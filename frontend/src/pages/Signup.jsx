@@ -3,17 +3,18 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { BackendUrl } from '../App'
-import image from '../assets/Login.png'
+import image from '../assets/Login1.png'
 import { Navigate, useNavigate } from 'react-router-dom'
 const Signup= () => {
   const [email, setemail]=useState('')
   const [password, setpassword]= useState('')
  const[name, setName]=useState('')
+   const [loading, setLoading] = useState(false)
  let navigate = useNavigate()
 
   const formSubmit = async (e) => {
     e.preventDefault();
-    
+     setLoading(true)
     try {
       const res =await axios.post(BackendUrl + '/api/user/register',{email, password, name})
       console.log(res);
@@ -27,7 +28,7 @@ const Signup= () => {
     } catch (err) {
                 console.log(err.message);
             toast.error(err.message)    
-    } }
+    } setLoading(false)  }
 
   return (
    <>
@@ -66,7 +67,15 @@ const Signup= () => {
           />
         </div>
         <div className='w-[340px] mx-auto mt-8'>
-             <button type='submit' className='bg-gray-600 text-center text-white w-[340px] h-9  flex justify-center items-center rounded-[8px] hover:bg-gray-500 text-lg font-medium'>Signup</button>
+            <button
+                  type='submit'
+                  disabled={loading}  
+                  className={`bg-gray-600 text-white w-[340px] h-9 flex justify-center items-center rounded-[8px] text-lg font-medium hover:bg-gray-500 ${
+                    loading ? 'cursor-not-allowed opacity-70' : ''
+                  }`}
+                >
+                  {loading ? 'Signing up...' : 'Signup'}
+                </button>
              </div>
       </form>
     </div>
