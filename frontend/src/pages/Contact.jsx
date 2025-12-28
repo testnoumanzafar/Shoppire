@@ -18,7 +18,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    alert("Your message has been sent!");
+    toast.success("Your message has been sent!");
   };
 
 

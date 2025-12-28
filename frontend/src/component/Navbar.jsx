@@ -29,10 +29,10 @@ const Navbar = () => {
       });
 
       if (response.status === 200) {
-        toast.success(response.data.message);
+        toast.success("Logout Successfully");
         localStorage.removeItem("tokenshop");
         localStorage.removeItem("userIdFashion");
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       console.log(error.message);
@@ -82,7 +82,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Profile */}
-          <div className="hidden md:block relative">
+          {/* <div className="hidden md:block relative">
             <FaRegUserCircle
               className="text-2xl cursor-pointer text-gray-700 hover:text-blue-500"
               onClick={Setting}
@@ -95,7 +95,19 @@ const Navbar = () => {
                 </p>
               </div>
             )}
-          </div>
+          </div> */}
+          {/* Desktop Profile */}
+{/* Desktop Logout Button */}
+{localStorage.getItem("tokenshop") && (
+  <button
+    className="hidden md:block text-lg font-medium text-gray-700 hover:text-blue-500"
+    onClick={logout}
+  >
+    Logout
+  </button>
+)}
+
+
 
           {/* Hamburger */}
           <div className="md:hidden">

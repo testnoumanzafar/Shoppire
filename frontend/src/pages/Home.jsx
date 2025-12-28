@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import Hero from '../component/Hero';
 import Newarrival from '../component/Newarrival';
@@ -13,11 +13,15 @@ import { useDispatch } from 'react-redux';
 import { addProduct } from '../component/reduxtoolkit/slice/products';
 const Home = () => {
 let dispatch = useDispatch();
+
+const newArrivalRef = useRef(null);
+  const popularRef = useRef(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(BackendUrl + "/api/product/list");
-        console.log(res.data);
+        // console.log(res.data);
         if(res){
           dispatch(addProduct(res.data));
         }
@@ -31,12 +35,24 @@ let dispatch = useDispatch();
     // return <div>Products Loaded</div>;
   }, []);
   
+    const scrollToSection = (section) => {
+    if (section === 'newArrival' && newArrivalRef.current) {
+      newArrivalRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (section === 'popular' && popularRef.current) {
+      popularRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
    <>
-  <Hero/>
+  <Hero scrollToSection={scrollToSection}/>
+  <div ref={newArrivalRef}>
 <Newarrival/>
+  </div>
+<div ref={popularRef}>
 <Popular/>
+</div>
 <Feature />
 <Footer  />
    </>

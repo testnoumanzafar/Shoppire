@@ -7,7 +7,7 @@ const Popular = () => {
   const showproud= useSelector((state)=>state.allProducts.Products)
     const [popular, setpopular] =  useState([])
        useEffect(()=>{
-         const data = showproud.products.filter((item)=>item.popular === true)
+         const data = showproud.products?.filter((item)=>item.popular === true)
          setpopular(data)
     
        },[showproud.products])

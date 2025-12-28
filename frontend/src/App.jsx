@@ -1,5 +1,5 @@
  
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import Navbar from './component/Navbar'
@@ -16,15 +16,18 @@ import Placeorder from './pages/Placeorder'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Payment from './pages/Payment'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 export const BackendUrl=import.meta.env.VITE_BACKEND_URL
 function App() {
 
+ 
   return (
     <>
      <BrowserRouter>
      <ToastContainer/>
      <div className='overflow-hidden bg-[#f9f9f9] text-[#404040]'>
-     <Navbar/>
+      <Navbar />
+       
      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/collection" element={<Collection />} />
@@ -33,11 +36,12 @@ function App() {
       <Route path="/product/:product_id" element={<Product />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/place-order" element={<Placeorder />} />
-      {/* <Route path="/order" element={<Orders />} /> */}
+      
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/payment" element={<Payment />} />
-      {/* <Route path="/popular" element={<Popular />} /> */}
+      <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+      
      </Routes>
      </div>
      </BrowserRouter>

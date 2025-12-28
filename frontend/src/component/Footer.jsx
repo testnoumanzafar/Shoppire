@@ -22,7 +22,7 @@ const Footer = () => {
               to your doorstep. Your satisfaction is our promise!
             </p>
             <p className="text-gray-500 mt-4">
-              Copyright 2024 shoppire. All rights reserved.
+              Copyright 2025 shoppire. All rights reserved.
             </p>
           </div>
 
@@ -31,29 +31,22 @@ const Footer = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="text-gray-400 hover:text-teal-400">
+                <a href="/about" className="text-gray-400 hover:text-teal-400">
                   About Us
                 </a>
               </li>
               <li>
                 <a
-                  href="#products"
+                  href="/collection"
                   className="text-gray-400 hover:text-teal-400"
                 >
                   Products
                 </a>
               </li>
+             
               <li>
                 <a
-                  href="#services"
-                  className="text-gray-400 hover:text-teal-400"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
+                  href="/contact"
                   className="text-gray-400 hover:text-teal-400"
                 >
                   Contact
@@ -61,7 +54,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#privacy"
+                  href="/privacypolicy"
                   className="text-gray-400 hover:text-teal-400"
                 >
                   Privacy Policy
@@ -80,7 +73,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-teal-400" />
-                <span className="text-gray-400">support@shoppire.com</span>
+                <span className="text-gray-400"> mtj3310@gmail.com</span>
               </li>
               <li className="flex items-center gap-3">
                 <FaMapMarkerAlt className="text-teal-400" />

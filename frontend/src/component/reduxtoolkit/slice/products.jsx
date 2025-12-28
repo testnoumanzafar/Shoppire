@@ -10,7 +10,7 @@ const productsReducer = createSlice({
     initialState,
     reducers: {
         addProduct: (state, action) => {
-            console.log(action.payload, "store");
+            // console.log(action.payload, "store");
             // const temp = { ...action.payload, qnty: 1 }
             state.Products = action.payload;
             // state.carts.push(temp)
