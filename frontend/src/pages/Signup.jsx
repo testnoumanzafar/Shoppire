@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { BackendUrl } from '../App'
-import image from '../assets/Login1.png'
+import image from '../assets/login1.png'
 import { Navigate, useNavigate } from 'react-router-dom'
 const Signup= () => {
   const [email, setemail]=useState('')
